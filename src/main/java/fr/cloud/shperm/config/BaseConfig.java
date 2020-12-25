@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class BaseConfig {
@@ -39,7 +40,14 @@ public class BaseConfig {
 
         if(this.file.exists()) {
 
-            FileConfiguration tempConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(this.plugin.getResource(this.name + ".yml")));
+            InputStream stream = this.plugin.getResource(this.name + ".yml");
+
+            if(stream == null) {
+                System.err.println("[ShPerm] " + this.name + ".yml doesn't exist, ignoring the task.");
+                return;
+            }
+
+            FileConfiguration tempConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(stream));
 
             if(getConfig().getKeys(true).containsAll(tempConfig.getKeys(true))) {
                 return;
