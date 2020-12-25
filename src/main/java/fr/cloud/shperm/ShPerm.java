@@ -4,6 +4,7 @@ import fr.cloud.shperm.api.ShPermAPI;
 import fr.cloud.shperm.config.GeneralConfig;
 import fr.cloud.shperm.config.GroupConfig;
 import fr.cloud.shperm.config.LangConfig;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ShPerm extends JavaPlugin {
@@ -20,6 +21,8 @@ public class ShPerm extends JavaPlugin {
         initConfig();
 
         shPermAPI = new ShPermAPI(this);
+
+
 
     }
 
@@ -46,7 +49,7 @@ public class ShPerm extends JavaPlugin {
         return generalConfig;
     }
 
-    public static ShPermAPI getShPermAPI() {
+    public ShPermAPI getShPermAPI() {
         return shPermAPI;
     }
 }
