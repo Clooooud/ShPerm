@@ -7,6 +7,8 @@ De cette manière :
 
 ````java
 import org.bukkit.plugin.java.JavaPlugin;
+import fr.cloud.shperm.ShPerm;
+import fr.cloud.shperm.api.ShPermAPI;
 
 public class Main extends JavaPlugin {
 
@@ -16,7 +18,6 @@ public class Main extends JavaPlugin {
     }
 
 }
-
 ````
 
 Je vous conseille d'ajouter le plugin à vos dépendances pour avoir accès aux fonctions plus facilement
