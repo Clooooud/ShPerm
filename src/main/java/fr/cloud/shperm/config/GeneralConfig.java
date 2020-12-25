@@ -8,4 +8,10 @@ public final class GeneralConfig extends BaseConfig {
         super("config", plugin);
     }
 
+    public String getDefaultGroupName() {
+        return getConfig().getString("default-group");
+    }
+
+    //TODO: Selectionner une langue
+
 }

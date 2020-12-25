@@ -38,5 +38,10 @@ public final class ShPermAPI extends GlobalHolder {
         return getUsers().stream().parallel().filter(user -> user.getGroup().equals(group)).collect(Collectors.toList());
     }
 
+    @NotNull
+    public final Group getDefaultGroup() {
+        return plugin.getShPermAPI().getGroup(plugin.getGeneralConfig().getDefaultGroupName());
+    }
+
 
 }
