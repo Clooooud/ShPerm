@@ -28,6 +28,11 @@ Ajoute le groupe `group` à la liste des groupes du plugin
 
 ##
 
+### `ShPermAPI#removeGroup(Group group)`
+Retire le groupe `group` de la liste des groupes du plugin
+
+##
+
 ### `Group` `ShPermAPI#getGroup(String groupName)`
 ##### `@Nullable`
 Retourne le groupe ayant le nom `groupName`
@@ -44,3 +49,18 @@ Retourne l'objet User de l'utilisateur ayant pour UUID `uuid`
 ##### `@NotNull`
 Retourne une `List<User>` comportant tout les User du groupe spécifié
 
+##
+
+### `Group` `ShPermAPI#getDefaultGroup()`
+##### `@NotNull`
+Retourne le groupe par défaut défini dans les configs
+
+##
+
+### `List<Group>` `ShPermAPI#getGroups()`
+##### `@NotNull`
+
+##
+
+### `List<User>` `ShPermAPI#getUsers()`
+##### `@NotNull`
