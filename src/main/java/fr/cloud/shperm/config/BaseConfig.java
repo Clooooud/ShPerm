@@ -43,7 +43,7 @@ public class BaseConfig {
             InputStream stream = this.plugin.getResource(this.name + ".yml");
 
             if(stream == null) {
-                System.err.println("[ShPerm] " + this.name + ".yml doesn't exist, ignoring the task.");
+                plugin.getLogger().severe(this.name + ".yml doesn't exist, ignoring the task.");
                 return;
             }
 

@@ -26,7 +26,7 @@ public final class ShPerm extends JavaPlugin {
 
         String defaultGroupName = getGeneralConfig().getDefaultGroupName();
         if (defaultGroupName == null || defaultGroupName.equals("")) {
-            this.getLogger().severe("[ShPerm] No default group found, disabling the plugin.");
+            this.getLogger().severe("No default group found, disabling the plugin.");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
