@@ -5,6 +5,8 @@ import fr.cloud.shperm.config.GeneralConfig;
 import fr.cloud.shperm.config.GroupConfig;
 import fr.cloud.shperm.config.LangConfig;
 import fr.cloud.shperm.data.DataManager;
+import fr.cloud.shperm.data.FlatDataManager;
+import fr.cloud.shperm.data.SQLDataManager;
 import fr.cloud.shperm.events.EventListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,7 +36,7 @@ public final class ShPerm extends JavaPlugin {
         shPermAPI = new ShPermAPI(this);
         Bukkit.getPluginManager().registerEvents(new EventListener(this), this);
 
-        // TODO: Initialisation dataManager
+        dataManager = dataManager instanceof SQLDataManager ? new SQLDataManager(this) : new FlatDataManager(this);
 
     }
 
