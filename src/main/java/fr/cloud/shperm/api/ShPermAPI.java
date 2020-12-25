@@ -21,6 +21,8 @@ public final class ShPermAPI extends GlobalHolder {
         getGroups().add(group);
     }
 
+    public final void removeGroup(final Group group) { getGroups().remove(group); }
+
     @Nullable
     public final Group getGroup(final String groupName) {
         return getGroups().stream().parallel().filter(group -> group.getName().equals(groupName)).findFirst().orElse(null);
