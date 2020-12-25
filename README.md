@@ -2,7 +2,22 @@
 
 ## API ##
 
-L'API fonctionne assez simplement, il faut juste récupérer la classe depuis Bukkit `PluginManager#getPlugin(String pluginName)` (Le nom du plugin étant "ShPerm") puis utiliser la fonction `ShPerm#getShPermAPI`
+L'API fonctionne assez simplement, il faut juste récupérer la classe depuis Bukkit `PluginManager#getPlugin(String pluginName)` (Le nom du plugin étant "ShPerm") puis utiliser la fonction `ShPerm#getShPermAPI`.
+De cette manière :
+
+````java
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class Main extends JavaPlugin {
+
+    public void onEnable() {
+        ShPerm perm = (ShPerm) Bukkit.getPluginManager().getPlugin("ShPerm");
+        ShPermAPI permAPI = perm.getShPermAPI();
+    }
+
+}
+
+````
 
 Je vous conseille d'ajouter le plugin à vos dépendances pour avoir accès aux fonctions plus facilement
 
