@@ -5,13 +5,13 @@ import fr.cloud.shperm.ShPerm;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LangConfig extends BaseConfig {
+public final class LangConfig extends BaseConfig {
 
-    public LangConfig(ShPerm plugin) {
+    public LangConfig(final ShPerm plugin) {
         super("lang", plugin);
     }
 
-    public String getNode(String node) {
+    public final String getNode(final String node) {
         String s = getConfig().getString(node);
         if(s == null) {
             return null;
@@ -19,7 +19,7 @@ public class LangConfig extends BaseConfig {
         return s.replace("&", "§");
     }
 
-    public List<String> getNodeList(String node) {
+    public final List<String> getNodeList(final String node) {
         return getConfig().getStringList(node).stream().map(s -> s.replace("&", "§")).collect(Collectors.toList());
     }
 

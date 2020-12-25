@@ -2,9 +2,9 @@ package fr.cloud.shperm.config;
 
 import fr.cloud.shperm.ShPerm;
 
-public class GeneralConfig extends BaseConfig {
+public final class GeneralConfig extends BaseConfig {
 
-    public GeneralConfig(ShPerm plugin) {
+    public GeneralConfig(final ShPerm plugin) {
         super("config", plugin);
     }
 

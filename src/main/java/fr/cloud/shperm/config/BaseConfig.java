@@ -16,7 +16,7 @@ public class BaseConfig {
 
     protected ShPerm plugin;
 
-    protected BaseConfig(String name, ShPerm plugin) {
+    protected BaseConfig(final String name, final ShPerm plugin) {
         this.plugin = plugin;
         this.name = name;
         this.file = new File(plugin.getDataFolder(), this.name + ".yml");
@@ -24,11 +24,11 @@ public class BaseConfig {
         reload();
     }
 
-    public void reload() {
+    public final void reload() {
         this.config = YamlConfiguration.loadConfiguration(this.file);
     }
 
-    public FileConfiguration getConfig() {
+    public final FileConfiguration getConfig() {
         if(config == null)
             reload();
         return this.config;
@@ -49,7 +49,7 @@ public class BaseConfig {
         this.plugin.saveResource(this.name + ".yml", true);
     }
 
-    protected void save() {
+    protected final void save() {
         try {
             this.config.save(this.file);
         } catch (IOException e) {

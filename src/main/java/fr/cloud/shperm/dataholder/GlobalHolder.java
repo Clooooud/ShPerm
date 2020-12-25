@@ -10,9 +10,9 @@ import java.util.List;
 
 public class GlobalHolder {
 
-    private ShPerm plugin;
+    protected ShPerm plugin;
 
-    public GlobalHolder(ShPerm plugin) {
+    public GlobalHolder(final ShPerm plugin) {
         this.plugin = plugin;
     }
 
@@ -20,12 +20,12 @@ public class GlobalHolder {
     private final List<User> users = new ArrayList<>();
 
     @NotNull
-    public List<Group> getGroups() {
+    public final List<Group> getGroups() {
         return groups;
     }
 
     @NotNull
-    public List<User> getUsers() {
+    public final List<User> getUsers() {
         return users;
     }
 

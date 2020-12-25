@@ -3,58 +3,58 @@ package fr.cloud.shperm.objects;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Group {
+public final class Group {
 
     private String name;
     private String prefix, suffix;
     private final List<Group> inheritances = new LinkedList<>();
     private final List<String> permissionNodes = new LinkedList<>();
 
-    public Group(String name) {
+    public Group(final String name) {
         this.name = name;
     }
 
-    public void addInheritance(Group group) {
+    public final void addInheritance(final Group group) {
         inheritances.add(group);
     }
 
-    public void addPermissionNode(String node) {
+    public final void addPermissionNode(final String node) {
         permissionNodes.add(node);
     }
 
-    public void removePermissionNode(String node) {
+    public final void removePermissionNode(final String node) {
         permissionNodes.remove(node);
     }
 
-    public List<Group> getInheritances() {
+    public final List<Group> getInheritances() {
         return inheritances;
     }
 
-    public List<String> getPermissionNodes() {
+    public final List<String> getPermissionNodes() {
         return permissionNodes;
     }
 
-    public String getPrefix() {
+    public final String getPrefix() {
         return prefix;
     }
 
-    public void setPrefix(String prefix) {
+    public final void setPrefix(final String prefix) {
         this.prefix = prefix;
     }
 
-    public String getSuffix() {
+    public final String getSuffix() {
         return suffix;
     }
 
-    public void setSuffix(String suffix) {
+    public final void setSuffix(final String suffix) {
         this.suffix = suffix;
     }
 
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 }

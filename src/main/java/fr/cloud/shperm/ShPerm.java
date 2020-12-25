@@ -7,7 +7,7 @@ import fr.cloud.shperm.config.LangConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ShPerm extends JavaPlugin {
+public final class ShPerm extends JavaPlugin {
 
     private GeneralConfig generalConfig;
     private GroupConfig groupConfig;
@@ -16,18 +16,16 @@ public class ShPerm extends JavaPlugin {
     private static ShPermAPI shPermAPI;
 
     @Override
-    public void onEnable() {
+    public final void onEnable() {
 
         initConfig();
 
         shPermAPI = new ShPermAPI(this);
 
-
-
     }
 
     @Override
-    public void onDisable() {
+    public final void onDisable() {
 
     }
 
@@ -37,19 +35,19 @@ public class ShPerm extends JavaPlugin {
         langConfig = new LangConfig(this);
     }
 
-    public LangConfig getLangConfig() {
+    public final LangConfig getLangConfig() {
         return langConfig;
     }
 
-    public GroupConfig getGroupConfig() {
+    public final GroupConfig getGroupConfig() {
         return groupConfig;
     }
 
-    public GeneralConfig getGeneralConfig() {
+    public final GeneralConfig getGeneralConfig() {
         return generalConfig;
     }
 
-    public ShPermAPI getShPermAPI() {
+    public final ShPermAPI getShPermAPI() {
         return shPermAPI;
     }
 }

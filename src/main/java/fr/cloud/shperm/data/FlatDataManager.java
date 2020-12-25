@@ -2,11 +2,11 @@ package fr.cloud.shperm.data;
 
 import fr.cloud.shperm.ShPerm;
 
-public class FlatDataManager implements DataManager {
+public final class FlatDataManager implements DataManager {
 
-    private ShPerm plugin;
+    private final ShPerm plugin;
 
-    public FlatDataManager(ShPerm plugin) {
+    public FlatDataManager(final ShPerm plugin) {
         this.plugin = plugin;
     }
 

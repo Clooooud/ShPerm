@@ -1,12 +1,14 @@
 package fr.cloud.shperm.objects;
 
+import com.sun.istack.internal.Nullable;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
-public class User {
+public final class User {
 
     private UUID uuid;
     private Group group;
@@ -14,70 +16,73 @@ public class User {
     private boolean prefixUse, suffixUse;
     private final List<String> permissionNodes = new LinkedList<>();
 
-    private Player player;
-
-    public User(UUID uuid, Group group) {
+    public User(final UUID uuid, final Group group) {
         this.uuid = uuid;
         this.group = group;
     }
 
-    public void addPermissionNode(String node) {
+    @Nullable
+    public final Player getPlayer() {
+        return Bukkit.getPlayer(uuid);
+    }
+
+    public final void addPermissionNode(final String node) {
         permissionNodes.add(node);
     }
 
-    public void removePermissionNode(String node) {
+    public final void removePermissionNode(final String node) {
         permissionNodes.remove(node);
     }
 
-    public List<String> getPermissionNodes() {
+    public final List<String> getPermissionNodes() {
         return permissionNodes;
     }
 
-    public UUID getUuid() {
+    public final UUID getUuid() {
         return uuid;
     }
 
-    public void setUuid(UUID uuid) {
+    public final void setUuid(final UUID uuid) {
         this.uuid = uuid;
     }
 
-    public Group getGroup() {
+    public final Group getGroup() {
         return group;
     }
 
-    public void setGroup(Group group) {
+    public final void setGroup(final Group group) {
         this.group = group;
     }
 
-    public String getPrefix() {
+    public final String getPrefix() {
         return prefix;
     }
 
-    public void setPrefix(String prefix) {
+    public final void setPrefix(final String prefix) {
         this.prefix = prefix;
     }
 
-    public String getSuffix() {
+    public final String getSuffix() {
         return suffix;
     }
 
-    public void setSuffix(String suffix) {
+    public final void setSuffix(final String suffix) {
         this.suffix = suffix;
     }
 
-    public boolean isPrefixUse() {
+    public final boolean isPrefixUse() {
         return prefixUse;
     }
 
-    public void setPrefixUse(boolean prefixUse) {
+    public final void setPrefixUse(final boolean prefixUse) {
         this.prefixUse = prefixUse;
     }
 
-    public boolean isSuffixUse() {
+    public final boolean isSuffixUse() {
         return suffixUse;
     }
 
-    public void setSuffixUse(boolean suffixUse) {
+    public final void setSuffixUse(final boolean suffixUse) {
         this.suffixUse = suffixUse;
     }
 }

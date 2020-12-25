@@ -2,11 +2,11 @@ package fr.cloud.shperm.data;
 
 import fr.cloud.shperm.ShPerm;
 
-public class SQLDataManager implements DataManager {
+public final class SQLDataManager implements DataManager {
 
     private ShPerm plugin;
 
-    public SQLDataManager(ShPerm plugin) {
+    public SQLDataManager(final ShPerm plugin) {
         this.plugin = plugin;
     }
 

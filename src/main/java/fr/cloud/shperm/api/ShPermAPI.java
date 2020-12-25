@@ -11,31 +11,28 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class ShPermAPI extends GlobalHolder {
-
-    private ShPerm plugin;
+public final class ShPermAPI extends GlobalHolder {
 
     public ShPermAPI(ShPerm plugin) {
         super(plugin);
-        this.plugin = plugin;
     }
 
-    public void addGroup(Group group) {
+    public final void addGroup(final Group group) {
         getGroups().add(group);
     }
 
     @Nullable
-    public Group getGroup(String groupName) {
+    public final Group getGroup(final String groupName) {
         return getGroups().stream().parallel().filter(group -> group.getName().equals(groupName)).findFirst().orElse(null);
     }
 
     @Nullable
-    public User getUser(UUID uuid) {
+    public final User getUser(final UUID uuid) {
         return getUsers().stream().parallel().filter(user -> user.getUuid().equals(uuid)).findFirst().orElse(null);
     }
 
     @NotNull
-    public List<User> getUsersFromGroup(Group group) {
+    public final List<User> getUsersFromGroup(final Group group) {
         return getUsers().stream().parallel().filter(user -> user.getGroup().equals(group)).collect(Collectors.toList());
     }
 
