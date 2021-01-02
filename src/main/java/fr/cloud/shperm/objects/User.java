@@ -4,9 +4,7 @@ import com.sun.istack.internal.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public final class User {
 
@@ -14,7 +12,7 @@ public final class User {
     private Group group;
     private String prefix = "", suffix = "";
     private boolean prefixUse, suffixUse;
-    private final List<String> permissionNodes = new ArrayList<>();
+    private final Set<String> permissionNodes = new HashSet<>();
 
     public User(final UUID uuid, final Group group) {
         this.uuid = uuid;
@@ -34,7 +32,7 @@ public final class User {
         permissionNodes.remove(node);
     }
 
-    public final List<String> getPermissionNodes() {
+    public final Set<String> getPermissionNodes() {
         return permissionNodes;
     }
 
