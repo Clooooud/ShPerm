@@ -1,7 +1,9 @@
 package fr.cloud.shperm.objects;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class Group {
 
@@ -9,9 +11,15 @@ public final class Group {
     private String prefix, suffix;
     private final List<Group> inheritances = new LinkedList<>();
     private final List<String> permissionNodes = new LinkedList<>();
+    private final boolean temporary;
 
     public Group(final String name) {
+        this(name, false);
+    }
+
+    public Group(final String name, final boolean temporary) {
         this.name = name;
+        this.temporary = temporary;
     }
 
     public final void addInheritance(final Group group) {
@@ -56,5 +64,21 @@ public final class Group {
 
     public final String getName() {
         return name;
+    }
+
+    public final boolean isTemporary() {
+        return temporary;
+    }
+
+    @Override
+    public final String toString() {
+        return "Group{" +
+                "name='" + name + '\'' +
+                ", prefix='" + prefix + '\'' +
+                ", suffix='" + suffix + '\'' +
+                ", inheritances=" + inheritances.stream().map(Group::getName).collect(Collectors.toList()) +
+                ", permissionNodes=" + permissionNodes +
+                ", isTemporary=" + temporary +
+                '}';
     }
 }

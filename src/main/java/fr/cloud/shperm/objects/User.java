@@ -4,17 +4,17 @@ import com.sun.istack.internal.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public final class User {
 
-    private UUID uuid;
+    private final UUID uuid;
     private Group group;
-    private String prefix, suffix;
+    private String prefix = "", suffix = "";
     private boolean prefixUse, suffixUse;
-    private final List<String> permissionNodes = new LinkedList<>();
+    private final List<String> permissionNodes = new ArrayList<>();
 
     public User(final UUID uuid, final Group group) {
         this.uuid = uuid;
@@ -42,10 +42,6 @@ public final class User {
         return uuid;
     }
 
-    public final void setUuid(final UUID uuid) {
-        this.uuid = uuid;
-    }
-
     public final Group getGroup() {
         return group;
     }
@@ -70,7 +66,7 @@ public final class User {
         this.suffix = suffix;
     }
 
-    public final boolean isPrefixUse() {
+    public final boolean isUsingPrefix() {
         return prefixUse;
     }
 
@@ -78,11 +74,24 @@ public final class User {
         this.prefixUse = prefixUse;
     }
 
-    public final boolean isSuffixUse() {
+    public final boolean isUsingSuffix() {
         return suffixUse;
     }
 
     public final void setSuffixUse(final boolean suffixUse) {
         this.suffixUse = suffixUse;
+    }
+
+    @Override
+    public final String toString() {
+        return "User{" +
+                "uuid=" + uuid +
+                ", group='" + group.getName() + "'" +
+                ", prefix='" + prefix + '\'' +
+                ", suffix='" + suffix + '\'' +
+                ", prefixUse=" + prefixUse +
+                ", suffixUse=" + suffixUse +
+                ", permissionNodes=" + permissionNodes +
+                '}';
     }
 }

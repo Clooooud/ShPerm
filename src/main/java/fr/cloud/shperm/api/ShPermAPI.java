@@ -25,22 +25,22 @@ public final class ShPermAPI extends GlobalHolder {
 
     @Nullable
     public final Group getGroup(final String groupName) {
-        return getGroups().stream().parallel().filter(group -> group.getName().equals(groupName)).findFirst().orElse(null);
+        return getGroups().parallelStream().filter(group -> group.getName().equals(groupName)).findFirst().orElse(null);
     }
 
     @Nullable
     public final User getUser(final UUID uuid) {
-        return getUsers().stream().parallel().filter(user -> user.getUuid().equals(uuid)).findFirst().orElse(null);
+        return getUsers().parallelStream().filter(user -> user.getUuid().equals(uuid)).findFirst().orElse(null);
     }
 
     @NotNull
     public final List<User> getUsersFromGroup(final Group group) {
-        return getUsers().stream().parallel().filter(user -> user.getGroup().equals(group)).collect(Collectors.toList());
+        return getUsers().parallelStream().filter(user -> user.getGroup().equals(group)).collect(Collectors.toList());
     }
 
     @NotNull
     public final Group getDefaultGroup() {
-        return plugin.getShPermAPI().getGroup(plugin.getGeneralConfig().getDefaultGroupName());
+        return getGroup(plugin.getGeneralConfig().getDefaultGroupName());
     }
 
 

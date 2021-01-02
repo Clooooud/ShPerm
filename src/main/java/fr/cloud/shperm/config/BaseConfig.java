@@ -57,7 +57,7 @@ public class BaseConfig {
         this.plugin.saveResource(this.name + ".yml", true);
     }
 
-    protected final void save() {
+    public void save() {
         try {
             this.config.save(this.file);
         } catch (IOException e) {

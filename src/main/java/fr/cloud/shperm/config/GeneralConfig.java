@@ -8,8 +8,24 @@ public final class GeneralConfig extends BaseConfig {
         super("config", plugin);
     }
 
-    public String getDefaultGroupName() {
+    public final String getDefaultGroupName() {
         return getConfig().getString("default-group");
+    }
+
+    public final boolean isUsingSQL() {
+        return getConfig().getString("save-system") != null && getConfig().getString("save-system").equalsIgnoreCase("sql");
+    }
+
+    public final String getSQLAdress() {
+        return String.format("jdbc:mysql://%1$s:%2$s/%3$s", getConfig().getString("host"), getConfig().getString("port"), getConfig().getString("database")) + "?autoReconnect=true&useSSL=false";
+    }
+
+    public final String getSQLUsername() {
+        return getConfig().getString("username");
+    }
+
+    public final String getSQLPassword() {
+        return getConfig().getString("password");
     }
 
     //TODO: Selectionner une langue

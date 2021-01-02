@@ -23,4 +23,6 @@ public final class LangConfig extends BaseConfig {
         return getConfig().getStringList(node).stream().map(s -> s.replace("&", "§")).collect(Collectors.toList());
     }
 
+    // TODO: Agir selon les différents langages
+
 }

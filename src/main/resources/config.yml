@@ -1,1 +1,28 @@
-default-group: default
+###################################
+#                                 #
+#             ShPerm              #
+#                                 #
+###################################
+
+# The name of the group that would be used when a new player joins the server
+default-group: "default"
+
+# Determine what save system to use: sql / flat (default: flat)
+save-system: flat
+
+###################################
+#                                 #
+#           SQL Config            #
+#                                 #
+###################################
+
+# Link needs to be filled: jdbc:mysql://host:port/database
+
+# Something like this: jdbc:mysql://localhost:3308/mcdb
+
+host: "localhost"
+port: "3306"
+database: "mc"
+
+username: "root"
+password: ""

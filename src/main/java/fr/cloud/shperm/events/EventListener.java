@@ -2,10 +2,13 @@ package fr.cloud.shperm.events;
 
 import fr.cloud.shperm.ShPerm;
 import fr.cloud.shperm.objects.User;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+
+import java.util.UUID;
 
 public final class EventListener implements Listener {
 
@@ -17,13 +20,21 @@ public final class EventListener implements Listener {
 
     @EventHandler
     public final void onJoin(final PlayerJoinEvent e) {
-        if (plugin.getShPermAPI().getUser(e.getPlayer().getUniqueId()) == null) {
-            plugin.getShPermAPI().getUsers().add(new User(e.getPlayer().getUniqueId(), plugin.getShPermAPI().getDefaultGroup()));
+        Player player = e.getPlayer();
+        UUID playerUUID = player.getUniqueId();
+        if (plugin.getShPermAPI().getUser(playerUUID) == null) {
+            plugin.getShPermAPI().getUsers().add(new User(playerUUID, plugin.getShPermAPI().getDefaultGroup()));
         }
     }
 
-    @EventHandler
+    @EventHandler()
     public final void onChat(final AsyncPlayerChatEvent e) {
-        //TODO: Chat format
+        User user = plugin.getShPermAPI().getUser(e.getPlayer().getUniqueId());
+        e.setFormat(
+                (user.isUsingPrefix() ? user.getPrefix() : user.getGroup().getPrefix()).replace("&", "§") +
+                "%s" +
+                (user.isUsingSuffix() ? user.getSuffix() : user.getGroup().getSuffix()).replace("&", "§") +
+                "%s"
+        );
     }
 }

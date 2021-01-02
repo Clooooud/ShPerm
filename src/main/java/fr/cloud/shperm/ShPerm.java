@@ -19,7 +19,7 @@ public final class ShPerm extends JavaPlugin {
 
     private DataManager dataManager;
 
-    private static ShPermAPI shPermAPI;
+    private ShPermAPI shPermAPI;
 
     @Override
     public final void onEnable() {
@@ -36,8 +36,22 @@ public final class ShPerm extends JavaPlugin {
         shPermAPI = new ShPermAPI(this);
         Bukkit.getPluginManager().registerEvents(new EventListener(this), this);
 
-        dataManager = dataManager instanceof SQLDataManager ? new SQLDataManager(this) : new FlatDataManager(this);
+        dataManager = generalConfig.isUsingSQL() ? new SQLDataManager(this) : new FlatDataManager(this);
 
+        shPermAPI.loadGroups();
+        dataManager.load();
+
+        launchSavingTask();
+
+        // Testing
+        getShPermAPI().getUsers().forEach(System.out::println);
+        getShPermAPI().getGroups().forEach(System.out::println);
+
+    }
+
+    public final void saveAll() {
+        shPermAPI.saveGroups();
+        dataManager.save();
     }
 
     @Override
@@ -46,6 +60,10 @@ public final class ShPerm extends JavaPlugin {
         groupConfig = null;
         langConfig = null;
         shPermAPI = null;
+
+        if(dataManager instanceof SQLDataManager) {
+            ((SQLDataManager) dataManager).stopConnection();
+        }
         dataManager = null;
     }
 
@@ -69,5 +87,13 @@ public final class ShPerm extends JavaPlugin {
 
     public final ShPermAPI getShPermAPI() {
         return shPermAPI;
+    }
+
+    public final DataManager getDataManager() {
+        return dataManager;
+    }
+
+    private void launchSavingTask() {
+        Bukkit.getScheduler().runTaskTimer(this, this::saveAll, 15*60*20L, 15*60*20L);
     }
 }
