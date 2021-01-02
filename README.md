@@ -59,8 +59,10 @@ Retourne le groupe par défaut défini dans les configs
 
 ### `List<Group>` `ShPermAPI#getGroups()`
 ##### `@NotNull`
+Retourne la liste de tous les groupes
 
 ##
 
 ### `List<User>` `ShPermAPI#getUsers()`
 ##### `@NotNull`
+Retourne la liste de tous les utilisateurs
