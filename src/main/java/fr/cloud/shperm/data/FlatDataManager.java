@@ -24,12 +24,12 @@ public final class FlatDataManager extends BaseConfig implements DataManager {
     }
 
     private void saveUser(final User user) {
-        getConfig().set(user.getUuid().toString() + ".prefix", user.getPrefix());
-        getConfig().set(user.getUuid().toString() + ".suffix", user.getSuffix());
-        getConfig().set(user.getUuid().toString() + ".prefixUse", user.isUsingPrefix());
-        getConfig().set(user.getUuid().toString() + ".suffixUse", user.isUsingSuffix());
-        getConfig().set(user.getUuid().toString() + ".permissions", user.getPermissionNodes());
-        getConfig().set(user.getUuid().toString() + ".group", user.getGroup().getName());
+        getConfig().set(user.getUUID().toString() + ".prefix", user.getPrefix());
+        getConfig().set(user.getUUID().toString() + ".suffix", user.getSuffix());
+        getConfig().set(user.getUUID().toString() + ".prefixUse", user.isUsingPrefix());
+        getConfig().set(user.getUUID().toString() + ".suffixUse", user.isUsingSuffix());
+        getConfig().set(user.getUUID().toString() + ".permissions", user.getPermissionNodes());
+        getConfig().set(user.getUUID().toString() + ".group", user.getGroup().getName());
     }
 
     @Override

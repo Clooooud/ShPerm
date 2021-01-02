@@ -23,7 +23,7 @@ public final class EventListener implements Listener {
         Player player = e.getPlayer();
         UUID playerUUID = player.getUniqueId();
         if (plugin.getShPermAPI().getUser(playerUUID) == null) {
-            plugin.getShPermAPI().getUsers().add(new User(playerUUID, plugin.getShPermAPI().getDefaultGroup()));
+            plugin.getShPermAPI().getUsers().add(new User(playerUUID, plugin.getShPermAPI().getDefaultGroup(), true));
         }
     }
 

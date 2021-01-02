@@ -30,7 +30,7 @@ public final class ShPermAPI extends GlobalHolder {
 
     @Nullable
     public final User getUser(final UUID uuid) {
-        return getUsers().parallelStream().filter(user -> user.getUuid().equals(uuid)).findFirst().orElse(null);
+        return getUsers().parallelStream().filter(user -> user.getUUID().equals(uuid)).findFirst().orElse(null);
     }
 
     @NotNull

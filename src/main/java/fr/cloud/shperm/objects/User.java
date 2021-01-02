@@ -9,14 +9,28 @@ import java.util.*;
 public final class User {
 
     private final UUID uuid;
+    private final Set<String> permissionNodes = new HashSet<>();
+    private boolean needSave = false;
     private Group group;
     private String prefix = "", suffix = "";
     private boolean prefixUse, suffixUse;
-    private final Set<String> permissionNodes = new HashSet<>();
 
     public User(final UUID uuid, final Group group) {
         this.uuid = uuid;
         this.group = group;
+    }
+
+    public User(UUID uuid, Group group, boolean needSave) {
+        this(uuid, group);
+        this.needSave = needSave;
+    }
+
+    public final void markAsUpdated() {
+        needSave = true;
+    }
+
+    public final boolean isNeedingSave() {
+        return needSave;
     }
 
     @Nullable
@@ -36,7 +50,7 @@ public final class User {
         return permissionNodes;
     }
 
-    public final UUID getUuid() {
+    public final UUID getUUID() {
         return uuid;
     }
 
