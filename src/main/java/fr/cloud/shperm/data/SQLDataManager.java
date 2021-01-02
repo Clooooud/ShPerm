@@ -35,18 +35,15 @@ public final class SQLDataManager implements DataManager {
     }
 
     private List<User> getAllUsersFromDB() {
-        List<User> users = new ArrayList<>();
-
         long time1 = new java.util.Date().getTime();
 
+        List<User> users = new ArrayList<>();
         try (
                 Statement statement = connection.createStatement();
                 PreparedStatement userNodeStatement = connection.prepareStatement("SELECT DISTINCT UP_Node FROM UsersPermissions WHERE UP_US_UUID = ?")
         ) {
 
             ResultSet usersQuery = statement.executeQuery("SELECT * FROM Users");
-
-
             while (usersQuery.next()) {
 
                 UUID uuid = UUID.fromString(usersQuery.getString(1));
@@ -57,11 +54,8 @@ public final class SQLDataManager implements DataManager {
                 boolean usingSuffix = usersQuery.getBoolean(6);
 
                 userNodeStatement.setString(1, uuid.toString());
-
                 ResultSet userNodesQuery = userNodeStatement.executeQuery();
-
                 List<String> nodes = new ArrayList<>();
-
                 while (userNodesQuery.next()) {
 
                     nodes.add(userNodesQuery.getString(1));
@@ -84,7 +78,6 @@ public final class SQLDataManager implements DataManager {
         }
 
         long time2 = new java.util.Date().getTime();
-
         System.out.println("The database (load) request took: " + (time2-time1) + "ms");
 
         return users;
@@ -120,7 +113,6 @@ public final class SQLDataManager implements DataManager {
             userInsertStatement.execute();
 
             userPermissionsInsertStatement.setString(1, user.getUUID().toString());
-
             user.getPermissionNodes().parallelStream().forEach(node -> {
                 try {
                     userPermissionsInsertStatement.setString(2, node);
@@ -152,7 +144,6 @@ public final class SQLDataManager implements DataManager {
                     "PRIMARY KEY(US_UUID)" +
                     ");"
             );
-
             statement.execute(
                     "CREATE TABLE IF NOT EXISTS UsersPermissions (" +
                     "UP_US_UUID VARCHAR(36) NOT NULL," +
