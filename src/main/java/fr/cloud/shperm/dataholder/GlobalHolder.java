@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public final class GlobalHolder {
+public class GlobalHolder {
 
     protected ShPerm plugin;
 
