@@ -24,7 +24,7 @@ lang: en
 # Something like this: jdbc:mysql://localhost:3308/mcdb
 
 host: "localhost"
-port: "3306"
+port: "3308"
 database: "mc"
 
 username: "root"
