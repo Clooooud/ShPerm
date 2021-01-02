@@ -7,12 +7,15 @@ import java.util.stream.Collectors;
 
 public final class LangConfig extends BaseConfig {
 
-    public LangConfig(final ShPerm plugin) {
+    private String language;
+
+    public LangConfig(final ShPerm plugin, String lang) {
         super("lang", plugin);
+        this.language = lang;
     }
 
     public final String getNode(final String node) {
-        String s = getConfig().getString(node);
+        final String s = getConfig().getString("lang." + language + "." + node);
         if(s == null) {
             return null;
         }
@@ -20,9 +23,7 @@ public final class LangConfig extends BaseConfig {
     }
 
     public final List<String> getNodeList(final String node) {
-        return getConfig().getStringList(node).stream().map(s -> s.replace("&", "§")).collect(Collectors.toList());
+        return getConfig().getStringList("lang." + language + "." + node).parallelStream().map(s -> s.replace("&", "§")).collect(Collectors.toList());
     }
-
-    // TODO: Agir selon les différents langages
 
 }

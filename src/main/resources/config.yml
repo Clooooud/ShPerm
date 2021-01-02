@@ -10,6 +10,9 @@ default-group: "default"
 # Determine what save system to use: sql / flat (default: flat)
 save-system: flat
 
+# Select the language you prefer, you can add yourself a new language in the lang.yml (default: en)
+lang: en
+
 ###################################
 #                                 #
 #           SQL Config            #

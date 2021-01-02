@@ -28,6 +28,8 @@ public final class GeneralConfig extends BaseConfig {
         return getConfig().getString("password");
     }
 
-    //TODO: Selectionner une langue
+    public final String getLanguage() {
+        return getConfig().getString("lang");
+    }
 
 }
