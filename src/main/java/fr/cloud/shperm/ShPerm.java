@@ -70,7 +70,7 @@ public final class ShPerm extends JavaPlugin {
     private void initConfig() {
         generalConfig = new GeneralConfig(this);
         groupConfig = new GroupConfig(this);
-        langConfig = new LangConfig(this);
+        langConfig = new LangConfig(this, generalConfig.getLanguage());
     }
 
     public final LangConfig getLangConfig() {
