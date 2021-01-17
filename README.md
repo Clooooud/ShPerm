@@ -2,7 +2,7 @@
 
 ## API ##
 
-L'API fonctionne assez simplement, il faut juste récupérer la classe depuis Bukkit `PluginManager#getPlugin(String pluginName)` (Le nom du plugin étant "ShPerm") puis utiliser la fonction `ShPerm#getShPermAPI` de cette manière :
+This API works really simply, you just need to get the class from Bukkit `PluginManager#getPlugin(String pluginName)` (The name of the plugin being "ShPerm") then use the method `ShPerm#getShPermAPI` like this :
 
 ````java
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,60 +19,60 @@ public class Main extends JavaPlugin {
 }
 ````
 
-Je vous conseille d'ajouter le plugin à vos dépendances pour avoir accès aux fonctions plus facilement
+You should add the plugin to your dependencies to have a faster access to the methods
 
 ##
 
 ### `ShPermAPI#addGroup(Group group)`
-Ajoute le groupe `group` à la liste des groupes du plugin
+Add the group `group` to the list of groups of the plugin
 
 ##
 
 ### `ShPermAPI#removeGroup(Group group)`
-Retire le groupe `group` de la liste des groupes du plugin
+Remove the group `group` from the list of groups of the plugin
 
 ##
 
 ### `Group` `ShPermAPI#getGroup(String groupName)`
 ##### `@Nullable`
-Retourne le groupe ayant le nom `groupName`
+Return the group having the name `groupName`
 
 ##
 
 ### `User` `ShPermAPI#getUser(UUID uuid)`
 ##### `@NotNull`
-Retourne l'objet User de l'utilisateur ayant pour UUID `uuid`
+Return the User having the UUID `uuid`
 
 ##
 
 ### `List<User>` `ShPermAPI#getUsersFromGroup(Group group)`
 ##### `@NotNull`
-Retourne une `List<User>` comportant tout les User du groupe spécifié
+Return a list `List<User>` with every user from the specified group
 
 ##
 
 ### `Group` `ShPermAPI#getDefaultGroup()`
 ##### `@NotNull`
-Retourne le groupe par défaut défini dans les configs
+Return the default group defined in the config
 
 ##
 
 ### `List<Group>` `ShPermAPI#getGroups()`
 ##### `@NotNull`
-Retourne la liste de tous les groupes
+Return a list of every group
 
 ##
 
 ### `List<User>` `ShPermAPI#getUsers()`
 ##### `@NotNull`
-Retourne la liste de tous les utilisateurs
+Return a list of every user
 
 ##
 
-### `void` `ShPermAPI#loadGroups()`
-Recharge les groupes depuis le fichier
+### `ShPermAPI#loadGroups()`
+Reload groups from file
 
 ##
 
-### `void` `ShPermAPI#saveGroups()`
-Sauvegarde les groupes dans le fichier
+### `ShPermAPI#saveGroups()`
+Save groups to file
