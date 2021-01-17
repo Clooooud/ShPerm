@@ -1,6 +1,7 @@
 package fr.cloud.shperm;
 
 import fr.cloud.shperm.api.ShPermAPI;
+import fr.cloud.shperm.commands.ShPermCommand;
 import fr.cloud.shperm.config.GeneralConfig;
 import fr.cloud.shperm.config.GroupConfig;
 import fr.cloud.shperm.config.LangConfig;
@@ -8,8 +9,12 @@ import fr.cloud.shperm.data.DataManager;
 import fr.cloud.shperm.data.FlatDataManager;
 import fr.cloud.shperm.data.SQLDataManager;
 import fr.cloud.shperm.events.EventListener;
+import fr.cloud.shperm.objects.Group;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
+
+import java.util.stream.Collectors;
 
 public final class ShPerm extends JavaPlugin {
 
@@ -21,6 +26,8 @@ public final class ShPerm extends JavaPlugin {
 
     private ShPermAPI shPermAPI;
 
+    private BukkitTask savingTask;
+
     @Override
     public final void onEnable() {
 
@@ -28,7 +35,7 @@ public final class ShPerm extends JavaPlugin {
 
         String defaultGroupName = getGeneralConfig().getDefaultGroupName();
         if (defaultGroupName == null || defaultGroupName.equals("")) {
-            this.getLogger().severe("No default group found, disabling the plugin.");
+            this.getLogger().severe(langConfig.getNode("console.error.nodefault"));
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
@@ -38,24 +45,19 @@ public final class ShPerm extends JavaPlugin {
 
         dataManager = generalConfig.isUsingSQL() ? new SQLDataManager(this) : new FlatDataManager(this);
 
-        shPermAPI.loadGroups();
-        dataManager.load();
+        load();
+
+        getCommand("shperm").setExecutor(new ShPermCommand(this));
 
         launchSavingTask();
 
-        // Testing
-        getShPermAPI().getUsers().forEach(System.out::println);
-        getShPermAPI().getGroups().forEach(System.out::println);
-
-    }
-
-    public final void saveAll() {
-        shPermAPI.saveGroups();
-        dataManager.save();
     }
 
     @Override
     public final void onDisable() {
+        savingTask.cancel();
+        saveAll();
+
         generalConfig = null;
         groupConfig = null;
         langConfig = null;
@@ -65,6 +67,23 @@ public final class ShPerm extends JavaPlugin {
             ((SQLDataManager) dataManager).stopConnection();
         }
         dataManager = null;
+    }
+
+    @Override
+    public final void reloadConfig() {
+        langConfig.reload();
+        groupConfig.reload();
+        generalConfig.reload();
+    }
+
+    public final void load() {
+        shPermAPI.loadGroups();
+        dataManager.load();
+    }
+
+    public final void saveAll() {
+        shPermAPI.saveGroups();
+        dataManager.save();
     }
 
     private void initConfig() {
@@ -94,6 +113,6 @@ public final class ShPerm extends JavaPlugin {
     }
 
     private void launchSavingTask() {
-        Bukkit.getScheduler().runTaskTimer(this, this::saveAll, 15*60*20L, 15*60*20L);
+        savingTask = Bukkit.getScheduler().runTaskTimer(this, this::saveAll, 15*60*20L, 15*60*20L);
     }
 }
