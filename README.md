@@ -66,3 +66,11 @@ Retourne la liste de tous les groupes
 ### `List<User>` `ShPermAPI#getUsers()`
 ##### `@NotNull`
 Retourne la liste de tous les utilisateurs
+
+##
+
+### `void` `ShPermAPI#loadGroups()`
+Recharge les groupes depuis le fichier
+
+### `void` `ShPermAPI#saveGroups()`
+Sauvegarde les groupes dans le fichier
