@@ -1,6 +1,6 @@
 name: ShPerm
 main: fr.cloud.shperm.ShPerm
-version: "1.0.0-SNAPSHOT"
+version: "1.0.0"
 api-version: "1.15"
 author: Clooooud
 commands:

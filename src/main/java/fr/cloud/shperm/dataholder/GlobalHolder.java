@@ -1,6 +1,6 @@
 package fr.cloud.shperm.dataholder;
 
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 import fr.cloud.shperm.ShPerm;
 import fr.cloud.shperm.objects.Group;
 import fr.cloud.shperm.objects.User;

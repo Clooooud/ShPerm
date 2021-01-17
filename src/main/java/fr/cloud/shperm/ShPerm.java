@@ -9,12 +9,9 @@ import fr.cloud.shperm.data.DataManager;
 import fr.cloud.shperm.data.FlatDataManager;
 import fr.cloud.shperm.data.SQLDataManager;
 import fr.cloud.shperm.events.EventListener;
-import fr.cloud.shperm.objects.Group;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
-
-import java.util.stream.Collectors;
 
 public final class ShPerm extends JavaPlugin {
 

@@ -1,7 +1,7 @@
 package fr.cloud.shperm.api;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.istack.internal.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import fr.cloud.shperm.ShPerm;
 import fr.cloud.shperm.dataholder.GlobalHolder;
 import fr.cloud.shperm.objects.Group;
