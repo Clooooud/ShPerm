@@ -1,4 +1,9 @@
 name: ShPerm
 main: fr.cloud.shperm.ShPerm
-version: "1.0"
+version: "1.0.0-SNAPSHOT"
 api-version: "1.15"
+author: Clooooud
+commands:
+    shperm:
+        aliases: ["shp"]
+        description: "Main command."

@@ -1,1 +1,118 @@
-lang: []
+lang:
+  en:
+    commands:
+      help:
+        main:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm group &8| &aShow group-related help"
+          - "&a/ShPerm user &8| &aShow user-related help"
+          - "&a/ShPerm version &8| &aShow plugin's informations"
+          - "&a/ShPerm reload &8| &aReload the plugin's config file and data from the files"
+          - "&a/ShPerm save &8| &aSave all of the changes (users and groups)"
+          - "&7====================================================="
+        user:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm user set <target> <parameter> <value> &8| &aSet a user parameter"
+          - "&a/ShPerm user perm &8| &aShow user's permissions-related help"
+          - "&a/ShPerm user info <target> &8| &aShow user's informations"
+          - "&a/ShPerm user save &8| &aSave every user"
+          - "&7====================================================="
+        userperm:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm user perm add <target> <node> &8| &aAdd a permission to the user"
+          - "&a/ShPerm user perm get <target> &8| &aGet the permissions the user has"
+          - "&a/ShPerm user perm remove <target> <node> &8| &aRemove a permission from the user"
+          - "&a/ShPerm user perm removeall <target> &8| &aRemove all the permissions a user has"
+          - "&7====================================================="
+        group:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm group create <name> &8| &aCreate a group"
+          - "&a/ShPerm group delete <target> &8| &aDelete a group"
+          - "&a/ShPerm group list &8| &aShow a list of all the groups"
+          - "&a/ShPerm group save &8| &aSave every group"
+          - "&a/ShPerm group perm &8| &aShow group's permissions-related help"
+          - "&a/ShPerm group set <target> <parameter> <value> &8| &aSet a group parameter"
+          - "&7====================================================="
+        groupperm:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm group perm add <target> <node> &8| &aAdd a permission to the group"
+          - "&a/ShPerm group perm get <target> &8| &aGet the permissions the group has"
+          - "&a/ShPerm group perm remove <target> <node> &8| &aRemove a permission from the group"
+          - "&a/ShPerm group perm removeall <target> &8| &aRemove all the permissions a group has"
+          - "&7====================================================="
+        groupinherit:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm group inherit add <target> <node> &8| &aAdd a inheritant to the group"
+          - "&a/ShPerm group inherit get <target> &8| &aGet the inheritants the group has"
+          - "&a/ShPerm group inherit remove <target> <node> &8| &aRemove a inheritant from the group"
+          - "&a/ShPerm group inherit removeall <target> &8| &aRemove all the inheritants a group has"
+          - "&7====================================================="
+      reload:
+        success: "&aSuccessfully reloaded the plugin."
+      save:
+        success: "&aSuccessfully saved all the data."
+      user:
+        info:
+          - "&a%1$s&7's info:"
+          - "&7UUID: &a%2$s"
+          - "&7Group: &a%3$s"
+          - "&7Prefix: '&a%4$s&7' - Using it?: &a%6$s"
+          - "&7Suffix: '&a%5$s&7' - Using it?: &a%7$s"
+        saved: "&aAll user data has been saved"
+        set:
+          parameters: "&7Here's the parameter list: &a%s"
+          success: "&aParameter set successfully."
+          incorrectvalue: "&cThe value you entered is incorrect."
+        perm:
+          remove:
+            success: "&aSuccessfully removed the permission from this player."
+            notfound: "&cThis user didn't have this permission."
+          removeall:
+            success: "&aSuccessfully removed all the permissions of this player."
+          get: "&7%1$s's permissions: &a%2$s"
+          add:
+            success: "&aSuccessfully added the permission to this player."
+      group:
+        create:
+          success: "&aSuccessfully created the group %s."
+          alreadyone: "&cThere is already a group named like that."
+        delete:
+          success: "&aSuccessfully deleted the group %s."
+          defaultgroup: "§cYou can't delete the default group."
+        list: "&7Group list: %s"
+        save: "&aGroups successfully saved"
+        set:
+          success: "&aParameter set successfully"
+          parameters: "&7Here's the parameter list: %s"
+        info:
+          - "&a%1$s&7 group info:"
+          - "&7Prefix: '&a%2$s&7'"
+          - "&7Suffix: '&a%3$s&7'"
+        perm:
+          remove:
+            success: "&aSuccessfully removed the permission from this group."
+            notfound: "&cThis group didn't have this permission."
+          removeall:
+            success: "&aSuccessfully removed all the permissions of this group."
+          get: "&7%1$s group permissions: &a%2$s"
+          add:
+            success: "&aSuccessfully added the permission to this group."
+        inheritage:
+          remove:
+            notinheritant: "&cThis group isn't an inheritant of %s."
+            success: "&aSuccessfully removed this group from the inheritants of %s"
+          removeall:
+            success: "&aSuccessfully removed all the inheritants of this group."
+          get: "&a%1$s &7group inheritants: &a%2$s"
+          add:
+            already: "&cThis group is already an inheritant of %s."
+            success: "&aSuccessfully added the inheritant to %s."
+      noperm: "&cYou don't have enough permissions to execute this command."
+      usernotfound: "&cThis user couldn't be found."
+      groupnotfound: "&cThis group couldn't be found"
+    console:
+      error:
+        nodefault: "No default group found, disabling the plugin."
+        noconfigfound: "%s.yml doesn't exist, ignoring the task."
+      warning:
+        nogroupfoundforuser: "Group for %s could not be recognized, giving him the default rank."

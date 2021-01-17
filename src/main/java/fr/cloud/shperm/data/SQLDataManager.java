@@ -1,6 +1,7 @@
 package fr.cloud.shperm.data;
 
 import fr.cloud.shperm.ShPerm;
+import fr.cloud.shperm.objects.Group;
 import fr.cloud.shperm.objects.User;
 
 import java.sql.*;
@@ -47,7 +48,9 @@ public final class SQLDataManager implements DataManager {
             while (usersQuery.next()) {
 
                 UUID uuid = UUID.fromString(usersQuery.getString(1));
-                String group = usersQuery.getString(2);
+                Group group = plugin.getShPermAPI().getGroup(usersQuery.getString(2));
+                if(group == null)
+                    group = plugin.getShPermAPI().getDefaultGroup();
                 String prefix = usersQuery.getString(3);
                 String suffix = usersQuery.getString(4);
                 boolean usingPrefix = usersQuery.getBoolean(5);
@@ -62,7 +65,7 @@ public final class SQLDataManager implements DataManager {
 
                 }
 
-                User user = new User(uuid, plugin.getShPermAPI().getGroup(group));
+                User user = new User(uuid, group);
                 user.setPrefix(prefix);
                 user.setSuffix(suffix);
                 user.setPrefixUse(usingPrefix);
@@ -121,6 +124,8 @@ public final class SQLDataManager implements DataManager {
                     e.printStackTrace();
                 }
             });
+
+            user.markAsUpdated(false);
 
         } catch (SQLException e) {
             e.printStackTrace();

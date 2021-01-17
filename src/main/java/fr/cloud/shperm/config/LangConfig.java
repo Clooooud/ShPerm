@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 
 public final class LangConfig extends BaseConfig {
 
-    private String language;
+    private final String language;
 
-    public LangConfig(final ShPerm plugin, String lang) {
+    public LangConfig(final ShPerm plugin, final String lang) {
         super("lang", plugin);
         this.language = lang;
     }

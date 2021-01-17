@@ -40,7 +40,7 @@ Retourne le groupe ayant le nom `groupName`
 ##
 
 ### `User` `ShPermAPI#getUser(UUID uuid)`
-##### `@Nullable`
+##### `@NotNull`
 Retourne l'objet User de l'utilisateur ayant pour UUID `uuid`
 
 ##

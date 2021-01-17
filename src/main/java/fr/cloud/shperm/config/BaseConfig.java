@@ -43,7 +43,7 @@ public class BaseConfig {
             InputStream stream = this.plugin.getResource(this.name + ".yml");
 
             if(stream == null) {
-                plugin.getLogger().severe(this.name + ".yml doesn't exist, ignoring the task.");
+                plugin.getLogger().severe(String.format(plugin.getLangConfig().getNode("console.error.noconfigfound"), this.name));
                 return;
             }
 
@@ -55,6 +55,10 @@ public class BaseConfig {
         }
 
         this.plugin.saveResource(this.name + ".yml", true);
+    }
+
+    public void clearFile() {
+        getConfig().getKeys(false).forEach(key -> getConfig().set(key, null));
     }
 
     public void save() {

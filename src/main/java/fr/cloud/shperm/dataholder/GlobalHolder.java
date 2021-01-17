@@ -5,9 +5,7 @@ import fr.cloud.shperm.ShPerm;
 import fr.cloud.shperm.objects.Group;
 import fr.cloud.shperm.objects.User;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GlobalHolder {
@@ -32,19 +30,21 @@ public class GlobalHolder {
     }
 
     public final void saveGroups() {
+        plugin.getGroupConfig().clearFile();
         this.groups.parallelStream().forEach(plugin.getGroupConfig()::addGroupToConfig);
         plugin.getGroupConfig().save();
     }
 
     public final void loadGroups() {
+        this.groups.clear();
         this.groups.addAll(plugin.getGroupConfig().getEveryGroups());
         this.groups.parallelStream().forEach(this::replaceAllTemporaryGroups);
     }
 
     private void replaceAllTemporaryGroups(final Group group) {
-        List<Group> toAdd = group.getInheritances().parallelStream().map(this::replaceTemporaryGroup).filter(Objects::nonNull).collect(Collectors.toList());
-        group.getInheritances().clear();
-        group.getInheritances().addAll(toAdd);
+        List<Group> toAdd = group.getInheritants(false).parallelStream().map(this::replaceTemporaryGroup).filter(Objects::nonNull).collect(Collectors.toList());
+        group.getInheritants(false).clear();
+        group.getInheritants(false).addAll(toAdd);
     }
 
     private Group replaceTemporaryGroup(final Group temporary) {

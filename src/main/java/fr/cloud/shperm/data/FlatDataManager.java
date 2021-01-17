@@ -19,6 +19,7 @@ public final class FlatDataManager extends BaseConfig implements DataManager {
 
     @Override
     public final void save() {
+        clearFile();
         plugin.getShPermAPI().getUsers().forEach(this::saveUser);
         super.save();
     }
@@ -28,12 +29,13 @@ public final class FlatDataManager extends BaseConfig implements DataManager {
         getConfig().set(user.getUUID().toString() + ".suffix", user.getSuffix());
         getConfig().set(user.getUUID().toString() + ".prefixUse", user.isUsingPrefix());
         getConfig().set(user.getUUID().toString() + ".suffixUse", user.isUsingSuffix());
-        getConfig().set(user.getUUID().toString() + ".permissions", user.getPermissionNodes());
+        getConfig().set(user.getUUID().toString() + ".permissions", user.getPermissionNodes().toArray(new String[0]));
         getConfig().set(user.getUUID().toString() + ".group", user.getGroup().getName());
     }
 
     @Override
     public final void load() {
+        plugin.getShPermAPI().getUsers().clear();
         plugin.getShPermAPI().getUsers().addAll(getConfig().getKeys(false).stream().map(this::parseUser).collect(Collectors.toList()));
     }
 
@@ -41,7 +43,7 @@ public final class FlatDataManager extends BaseConfig implements DataManager {
         UUID userID = UUID.fromString(uuid);
         Group group = plugin.getShPermAPI().getGroup(getConfig().getString(uuid + ".group"));
         if (group == null) {
-            plugin.getLogger().warning("Group for " + uuid + " could not be recognized, giving him the default rank.");
+            plugin.getLogger().warning(String.format(plugin.getLangConfig().getNode("console.warning.nogroupfoundforuser"), uuid));
             group = plugin.getShPermAPI().getDefaultGroup();
         }
         User user = new User(userID, group);

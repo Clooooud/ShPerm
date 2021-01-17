@@ -1,12 +1,16 @@
 package fr.cloud.shperm.objects;
 
 import com.sun.istack.internal.Nullable;
+import fr.cloud.shperm.ShPerm;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
 
 import java.util.*;
 
 public final class User {
+
+    private static HashMap<Player, PermissionAttachment> attachments = new HashMap<>();
 
     private final UUID uuid;
     private final Set<String> permissionNodes = new HashSet<>();
@@ -23,6 +27,10 @@ public final class User {
     public User(UUID uuid, Group group, boolean needSave) {
         this(uuid, group);
         this.needSave = needSave;
+    }
+
+    public final void markAsUpdated(boolean value) {
+        needSave = value;
     }
 
     public final void markAsUpdated() {
@@ -92,6 +100,32 @@ public final class User {
 
     public final void setSuffixUse(final boolean suffixUse) {
         this.suffixUse = suffixUse;
+    }
+
+    public final void applyPermissions(ShPerm plugin) {
+        Player player = this.getPlayer();
+        if(player == null)
+            return;
+
+        if (attachments.containsKey(player)) {
+            player.removeAttachment(attachments.get(player));
+        }
+
+        Set<String> permissions = new HashSet<>(this.group.getPermissionNodes());
+        this.group.getInheritants(true).stream().map(Group::getPermissionNodes).forEach(permissions::addAll);
+        permissions.addAll(this.permissionNodes);
+
+        PermissionAttachment attachment = player.addAttachment(plugin);
+
+        Arrays.asList("minecraft.command.me",
+                "minecraft.command.help",
+                "minecraft.command.msg",
+                "bukkit.command.version",
+                "bukkit.command.plugins",
+                "bukkit.command.help").forEach(node -> attachment.setPermission(node, false));
+        permissions.forEach(perm -> attachment.setPermission(perm, true));
+
+        attachments.put(player, attachment);
     }
 
     @Override

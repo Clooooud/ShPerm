@@ -1,15 +1,13 @@
 package fr.cloud.shperm.objects;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public final class Group {
 
     private String name;
-    private String prefix, suffix;
-    private final List<Group> inheritances = new LinkedList<>();
+    private String prefix = "", suffix = "";
+    private final Set<Group> inheritances = new HashSet<>();
     private final List<String> permissionNodes = new LinkedList<>();
     private final boolean temporary;
 
@@ -34,8 +32,19 @@ public final class Group {
         permissionNodes.remove(node);
     }
 
-    public final List<Group> getInheritances() {
-        return inheritances;
+    public Set<Group> getInheritants(boolean deep) {
+        if(deep)
+            return getInheritants(this);
+        return this.inheritances;
+    }
+
+    private Set<Group> getInheritants(Group group) {
+        Set<Group> groups = new HashSet<>();
+
+        group.inheritances.parallelStream().filter(gro -> !groups.contains(gro)).forEach(gro -> groups.addAll(getInheritants(gro)));
+
+        groups.addAll(this.inheritances);
+        return groups;
     }
 
     public final List<String> getPermissionNodes() {
