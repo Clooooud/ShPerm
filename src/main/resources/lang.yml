@@ -31,6 +31,7 @@ lang:
           - "&a/ShPerm group list &8| &aShow a list of all the groups"
           - "&a/ShPerm group save &8| &aSave every group"
           - "&a/ShPerm group perm &8| &aShow group's permissions-related help"
+          - "&a/ShPerm group inheritage &8| &aShow group's permissions-related help"
           - "&a/ShPerm group set <target> <parameter> <value> &8| &aSet a group parameter"
           - "&7====================================================="
         groupperm:
@@ -42,10 +43,10 @@ lang:
           - "&7====================================================="
         groupinherit:
           - "&7======================= &6ShPerm &7======================="
-          - "&a/ShPerm group inherit add <target> <node> &8| &aAdd a inheritant to the group"
-          - "&a/ShPerm group inherit get <target> &8| &aGet the inheritants the group has"
-          - "&a/ShPerm group inherit remove <target> <node> &8| &aRemove a inheritant from the group"
-          - "&a/ShPerm group inherit removeall <target> &8| &aRemove all the inheritants a group has"
+          - "&a/ShPerm group inheritage add <target> <node> &8| &aAdd a inheritant to the group"
+          - "&a/ShPerm group inheritage get <target> &8| &aGet the inheritants the group has"
+          - "&a/ShPerm group inheritage remove <target> <node> &8| &aRemove a inheritant from the group"
+          - "&a/ShPerm group inheritage removeall <target> &8| &aRemove all the inheritants a group has"
           - "&7====================================================="
       reload:
         success: "&aSuccessfully reloaded the plugin."
@@ -66,7 +67,7 @@ lang:
         perm:
           remove:
             success: "&aSuccessfully removed the permission from this player."
-            notfound: "&cThis user didn't have this permission."
+            notfound: "&cThis user doesn't have this permission."
           removeall:
             success: "&aSuccessfully removed all the permissions of this player."
           get: "&7%1$s's permissions: &a%2$s"
@@ -91,7 +92,7 @@ lang:
         perm:
           remove:
             success: "&aSuccessfully removed the permission from this group."
-            notfound: "&cThis group didn't have this permission."
+            notfound: "&cThis group doesn't have this permission."
           removeall:
             success: "&aSuccessfully removed all the permissions of this group."
           get: "&7%1$s group permissions: &a%2$s"
@@ -103,7 +104,7 @@ lang:
             success: "&aSuccessfully removed this group from the inheritants of %s"
           removeall:
             success: "&aSuccessfully removed all the inheritants of this group."
-          get: "&a%1$s &7group inheritants: &a%2$s"
+          get: "&7%1$s group inheritants: &a%2$s"
           add:
             already: "&cThis group is already an inheritant of %s."
             success: "&aSuccessfully added the inheritant to %s."
@@ -116,3 +117,121 @@ lang:
         noconfigfound: "%s.yml doesn't exist, ignoring the task."
       warning:
         nogroupfoundforuser: "Group for %s could not be recognized, giving him the default rank."
+  fr:
+    commands:
+      help:
+        main:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm group &8| &aAffiche l'aide relative aux groupes"
+          - "&a/ShPerm user &8| &aAffiche l'aide relative aux utilisateurs"
+          - "&a/ShPerm version &8| &aAffiche les informations du plugin"
+          - "&a/ShPerm reload &8| &aRecharge les config et les données des fichiers"
+          - "&a/ShPerm save &8| &aSauvegarder tous les changements"
+          - "&7====================================================="
+        user:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm user set <target> <parameter> <value> &8| &aDéfinir un paramètre utilisateur"
+          - "&a/ShPerm user perm &8| &aAfficher l'aide relative aux autorisations de l'utilisateur"
+          - "&a/ShPerm user info <target> &8| &aAffiche les informations de l'utilisateur"
+          - "&a/ShPerm user save &8| &aSauvegarder tous les utilisateurs"
+          - "&7====================================================="
+        userperm:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm user perm add <target> <node> &8| &aAjouter une permission à l'utilisateur"
+          - "&a/ShPerm user perm get <target> &8| &aAffiche les permissions que le joueur a"
+          - "&a/ShPerm user perm remove <target> <node> &8| &aRetirer une permission à l'utilisateur"
+          - "&a/ShPerm user perm removeall <target> &8| &aRetire toutes les permissions de l'utilisateur"
+          - "&7====================================================="
+        group:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm group create <name> &8| &aCréer un groupe"
+          - "&a/ShPerm group delete <target> &8| &aSupprimer un groupe"
+          - "&a/ShPerm group list &8| &aAfficher la liste de tous les groupes"
+          - "&a/ShPerm group save &8| &aSauvegarder tous les groupes"
+          - "&a/ShPerm group perm &8| &aAffiche l'aide relative aux permissions du groupe"
+          - "&a/ShPerm group inheritage &8| &aAffiche l'aide relative aux héritiers du groupe"
+          - "&a/ShPerm group set <target> <parameter> <value> &8| &aDéfinir un paramètre du groupe"
+          - "&7====================================================="
+        groupperm:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm group perm add <target> <node> &8| &aAjouter une permission au groupe"
+          - "&a/ShPerm group perm get <target> &8| &aAffiche les permissions que le groupe a"
+          - "&a/ShPerm group perm remove <target> <node> &8| &aRetire une permission du groupe"
+          - "&a/ShPerm group perm removeall <target> &8| &aRetire toutes les permissions du groupe"
+          - "&7====================================================="
+        groupinherit:
+          - "&7======================= &6ShPerm &7======================="
+          - "&a/ShPerm group inheritage add <target> <node> &8| &aAjouter un héritier au groupe"
+          - "&a/ShPerm group inheritage get <target> &8| &aAffiche les héritiers du groupe"
+          - "&a/ShPerm group inheritage remove <target> <node> &8| &aRetire un héritier du groupe"
+          - "&a/ShPerm group inheritage removeall <target> &8| &aRetire tous les héritiers du groupe"
+          - "&7====================================================="
+      reload:
+        success: "&aRechargement du plugin avec succès."
+      save:
+        success: "&aSauvegarde de toutes les données réalisé avec succès."
+      user:
+        info:
+          - "&7Info de &a%1$s&7:"
+          - "&7UUID: &a%2$s"
+          - "&7Groupe: &a%3$s"
+          - "&7Préfixe: '&a%4$s&7' - Utilisation: &a%6$s"
+          - "&7Suffixe: '&a%5$s&7' - Utilisation: &a%7$s"
+        saved: "&aToutes les données utilisateurs ont été sauvegardé"
+        set:
+          parameters: "&7Voici la liste des paramètres : &a%s"
+          success: "&aParamètre défini avec succès."
+          incorrectvalue: "&cLa valeur que vous avez rentré est incorrecte."
+        perm:
+          remove:
+            success: "&aLa permission de ce joueur a été supprimé avec succès."
+            notfound: "&cCet utilisateur n'a pas cette permission."
+          removeall:
+            success: "&aToutes les permissions de ce joueur ont été supprimé avec succès."
+          get: "&7Permissions de %1$s: &a%2$s"
+          add:
+            success: "&aLa permission a été ajouté à ce joueur avec succès."
+      group:
+        create:
+          success: "&aLe groupe %s a été créé avec succès."
+          alreadyone: "&cIl y a déjà un groupe nommé comme cela."
+        delete:
+          success: "&aLe groupe %s a été supprimé avec succès."
+          defaultgroup: "§cTu ne peux pas supprimer le groupe par défaut."
+        list: "&7Liste des groupes : %s"
+        save: "&aLes groupes ont été sauvegardé avec succès"
+        set:
+          success: "&aParamètre défini avec succès"
+          parameters: "&7Voici la liste des paramètres : %s"
+        info:
+          - "&7Info du groupe &a%1$s:"
+          - "&7Préfixe: '&a%2$s&7'"
+          - "&7Suffixe: '&a%3$s&7'"
+        perm:
+          remove:
+            success: "&aCette permission a été supprimé de ce groupe avec succès."
+            notfound: "&cCe groupe n'a pas cette permission."
+          removeall:
+            success: "&aToutes les permissions ont été supprimé du groupe avec succès."
+          get: "&7Permissions du groupe %1$s: &a%2$s"
+          add:
+            success: "&aCette permission a été ajouté au groupe avec succès."
+        inheritage:
+          remove:
+            notinheritant: "&cCe groupe n'est pas un héritier de %s."
+            success: "&aCe groupe a été retiré des héritiers de %s avec succès"
+          removeall:
+            success: "&aTous les héritiers du groupe ont été retiré avec succès."
+          get: "&7Héritiers du groupe %1$s: &a%2$s"
+          add:
+            already: "&cCe groupe est déjà un héritier de %s."
+            success: "&aCe groupe a été ajouté aux héritiers de %s."
+      noperm: "&cTu n'as pas les permissions requises pour exécuter cette commande."
+      usernotfound: "&cCet utilisateur n'a pas pu être trouvé."
+      groupnotfound: "&cCe groupe n'a pas pu être trouvé"
+    console:
+      error:
+        nodefault: "Aucun groupe par défaut trouvé, désactivation du plugin."
+        noconfigfound: "%s.yml n'existe pas, la tâche sera ignorée."
+      warning:
+        nogroupfoundforuser: "Le groupe de %s n'a pas pu être reconnu, le groupe par défaut lui a été donné."
