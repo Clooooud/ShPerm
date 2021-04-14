@@ -30,9 +30,11 @@ public abstract class CommandBase implements TabExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(!sender.hasPermission("shperm.admin") && !sender.isOp()) {
             if(subCommands.containsKey("version")){
-                if(args[0].equalsIgnoreCase("version")){
-                    subCommands.get("version").onCommand(sender, command, label, args);
-                    return true;
+                if (args.length > 0) {
+                    if(args[0].equalsIgnoreCase("version")){
+                        subCommands.get("version").onCommand(sender, command, label, args);
+                        return true;
+                    }
                 }
             }
 
